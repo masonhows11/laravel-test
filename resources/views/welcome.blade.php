@@ -41,7 +41,7 @@
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center">
+        {{-- <div class="row d-flex justify-content-center">
             <div class="col-lg-10 my-5">
                 <form action="{{ route('full.text.search') }}" method="post">
                     @csrf
@@ -54,7 +54,7 @@
                     <button type="submit" class="btn btn-primary">جستجو</button>
                   </form>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row my-5 d-flex justify-content-center">
 

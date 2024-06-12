@@ -9,28 +9,44 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     // ->orderBy('title')
+    //  return  Post::query()->where('title','Like','%'.$request->search.'%')->toSql();
 
-    public function home(){
+    public function home()
+    {
 
         return view('welcome')
-        ->with(['posts' => Post::query()->simplePaginate(20)]);
+            ->with(['posts' => Post::query()->simplePaginate(20)]);
     }
 
 
     public function search(Request $request)
     {
 
-       // $posts = Post::query()->where('title','Like','%'.$request->search.'%')->simplePaginate(20);
-        return  Post::query()->where('title','Like','%'.$request->search.'%')->toSql();
-        return view('search.result',[ 'posts' => $posts ]);
+        //// find  if searchable term exists in all content in database   ////
+        // $posts = Post::query()->where('title','Like','%'.$request->search.'%')
+        // ->orWhere('description','LIKE','%'.$request->search.'%')
+        // ->simplePaginate(20);
+
+        //// start with searchable term ////
+        // $posts = Post::query()->where('title','Like',$request->search.'%')
+        // ->orWhere('description','LIKE',$request->search.'%')
+        // ->simplePaginate(20);
+
+
+        //// end with searchable term ////
+        // $posts = Post::query()->where('title', 'Like', '%' . $request->search)
+        //     ->orWhere('description', 'LIKE', '%' . $request->search)
+        //     ->simplePaginate(20);
+
+        return view('search.result', ['posts' => $posts]);
     }
 
     public function fullSearch(Request $request)
     {
 
 
-        $posts = DB::table('posts')->whereFullText('body',$request->search)->simplePaginate();
+        $posts = DB::table('posts')->whereFullText('body', $request->search)->simplePaginate();
 
-        return view('search.result',['posts' => $posts]);
+        return view('search.result', ['posts' => $posts]);
     }
 }
