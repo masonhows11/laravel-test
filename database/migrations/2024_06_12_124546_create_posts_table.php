@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title')->index();
-            $table->text('description')->fulltext();
+            $table->string('description')->index();
+            $table->text('body')->fulltext();
             $table->timestamps();
 
             $table->unique('user_id');

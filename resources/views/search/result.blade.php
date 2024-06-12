@@ -38,6 +38,7 @@
                         <th scope="col">#</th>
                         <th scope="col">عنوان</th>
                         <th scope="col">توضیحات</th>
+                        <th scope="col">متن</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -46,6 +47,7 @@
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title}}</td>
                         <td>{{ $post->description}}</td>
+                        <td>{{ $post->body}}</td>
                       </tr>
                      @endforeach
 

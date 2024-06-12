@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
 
 
-        $posts = DB::table('posts')->whereFullText('description',$request->search)->simplePaginate();
+        $posts = DB::table('posts')->whereFullText('body',$request->search)->simplePaginate();
 
         return view('search.result',['posts' => $posts]);
     }
