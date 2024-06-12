@@ -33,7 +33,7 @@
 
                     <div class="mb-3">
                       <label for="search" class="form-label">جستجو</label>
-                      <input type="text" class="form-control" id="search" >
+                      <input type="text" name="search" class="form-control" id="search" >
                     </div>
 
                     <button type="submit" class="btn btn-primary">جستجو</button>
@@ -43,12 +43,12 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10 my-5">
-                <form action="{{ route('search') }}" method="post">
+                <form action="{{ route('full.text.search') }}" method="post">
                     @csrf
 
                     <div class="mb-3">
-                      <label for="search" class="form-label">جستجو</label>
-                      <input type="text" class="form-control" id="search" >
+                      <label for="search" class="form-label">جستجو متنی</label>
+                      <input type="text" name="search" class="form-control" id="search" >
                     </div>
 
                     <button type="submit" class="btn btn-primary">جستجو</button>

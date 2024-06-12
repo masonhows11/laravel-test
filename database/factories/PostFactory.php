@@ -18,6 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->name(),
+            'user_id'=> fake()->unique()->numberBetween(1,1000),
             'description' => fake()->text(),
 
         ];
