@@ -21,3 +21,5 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'home'])->name('home');
 
 Route::post('/search',[HomeController::class,'search'])->name('search');
+
+Route::post('/full-text-search',[HomeController::class,'fullSearch'])->name('full.text.search');

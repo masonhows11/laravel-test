@@ -24,4 +24,13 @@ class HomeController extends Controller
 
         return view('search.result');
     }
+
+    public function fullSearch(Request $request)
+    {
+
+
+
+
+        return view('search.result');
+    }
 }

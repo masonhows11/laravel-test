@@ -41,6 +41,21 @@
             </div>
         </div>
 
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-10 my-5">
+                <form action="{{ route('search') }}" method="post">
+                    @csrf
+
+                    <div class="mb-3">
+                      <label for="search" class="form-label">جستجو</label>
+                      <input type="text" class="form-control" id="search" >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">جستجو</button>
+                  </form>
+            </div>
+        </div>
+
         <div class="row my-5 d-flex justify-content-center">
 
 
