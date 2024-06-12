@@ -38,6 +38,10 @@ class HomeController extends Controller
         //     ->orWhere('description', 'LIKE', '%' . $request->search)
         //     ->simplePaginate(20);
 
+         $posts = Post::query()->where('title','Like','%'.$request->search.'%')
+        ->orWhere('description','LIKE','%'.$request->search.'%')
+        ->simplePaginate(20);
+
         return view('search.result', ['posts' => $posts]);
     }
 
