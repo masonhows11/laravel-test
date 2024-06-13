@@ -11,6 +11,10 @@ class HomeController extends Controller
     // ->orderBy('title')
     //  return  Post::query()->where('title','Like','%'.$request->search.'%')->toSql();
 
+    // $posts = Post::query()->where('title','Like','%'.$request->search.'%')
+    // ->orWhere('description','LIKE','%'.$request->search.'%')
+    // ->simplePaginate(20);
+
     public function home()
     {
 
@@ -22,25 +26,26 @@ class HomeController extends Controller
     public function search(Request $request)
     {
 
-        //// find  if searchable term exists in all content in database   ////
-        // $posts = Post::query()->where('title','Like','%'.$request->search.'%')
-        // ->orWhere('description','LIKE','%'.$request->search.'%')
-        // ->simplePaginate(20);
+        //// find searchable term exists in all title string   ////
+        //// index not working on this pattern '%'.$request->search.'%'
+        $posts = Post::query()->where('title','Like','%'.$request->search.'%')
+        ->orWhere('description','LIKE','%'.$request->search.'%')
+        ->simplePaginate(20);
 
         //// start with searchable term ////
+        //// index working
         // $posts = Post::query()->where('title','Like',$request->search.'%')
         // ->orWhere('description','LIKE',$request->search.'%')
         // ->simplePaginate(20);
 
 
-        //// end with searchable term ////
+        ////  end with searchable term ////
+        //// index not working
         // $posts = Post::query()->where('title', 'Like', '%' . $request->search)
         //     ->orWhere('description', 'LIKE', '%' . $request->search)
         //     ->simplePaginate(20);
 
-         $posts = Post::query()->where('title','Like','%'.$request->search.'%')
-        ->orWhere('description','LIKE','%'.$request->search.'%')
-        ->simplePaginate(20);
+
 
         return view('search.result', ['posts' => $posts]);
     }
